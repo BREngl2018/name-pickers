@@ -1,6 +1,6 @@
 # Share
 
-A cheerful, private random name picker for classrooms, teams, giveaways, and groups.
+Share's mission is to connect excess products with people who want them. The app makes selecting recipients fair, simple, and transparent.
 
 ## Features
 
