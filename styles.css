@@ -107,6 +107,34 @@ body { color-scheme: dark; }
 .result { background: #090b09; border: 1px solid #343a34; }
 .history-list li { background: #303630; }
 .brand-logo { background: #fff9ef; }
+
+/* Continuous orchard background */
+body::before {
+  content: "";
+  position: fixed;
+  z-index: -3;
+  inset: 0 auto 0 0;
+  width: calc(100vw + 250vh);
+  height: 100vh;
+  background: url("orchard-scroll-bg.png") repeat-x left center / 250vh 100vh;
+  animation: orchard-scroll 72s linear infinite;
+  will-change: transform;
+  pointer-events: none;
+}
+body::after {
+  content: "";
+  position: fixed;
+  z-index: -2;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(8, 11, 9, .72), rgba(8, 11, 9, .9));
+  pointer-events: none;
+}
+@keyframes orchard-scroll {
+  to { transform: translateX(-250vh); }
+}
+@media (prefers-reduced-motion: reduce) {
+  body::before { animation: none; }
+}
 @media (max-width: 780px) {
   main { width: min(100% - 24px, 580px); }
   header { height: 75px; }
