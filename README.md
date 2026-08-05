@@ -1,4 +1,4 @@
-# Name Pickers
+# Share
 
 A cheerful, private random name picker for classrooms, teams, giveaways, and groups.
 
