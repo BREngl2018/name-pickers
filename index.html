@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#fff9ef">
+  <meta name="description" content="A cheerful, private random name picker for classrooms, teams, and giveaways.">
+  <title>Name Pickers</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="glow glow-one"></div>
+  <div class="glow glow-two"></div>
+  <main>
+    <header>
+      <a class="brand" href="#" aria-label="Name Pickers home">
+        <span class="brand-mark">N</span>
+        <span>Name Pickers</span>
+      </a>
+      <span class="privacy"><span class="privacy-dot"></span> Saved on this device</span>
+    </header>
+
+    <section class="hero">
+      <p class="eyebrow">A tiny tool for big decisions</p>
+      <h1>Who gets picked<br><em>this time?</em></h1>
+      <p class="intro">Add your names, tap the button, and let chance do the rest. Fair, fast, and delightfully dramatic.</p>
+    </section>
+
+    <section class="workspace" aria-label="Name picker">
+      <article class="card names-card">
+        <div class="card-heading">
+          <div>
+            <p class="step">01</p>
+            <h2>Add names</h2>
+          </div>
+          <button id="clearButton" class="text-button" type="button">Clear all</button>
+        </div>
+
+        <form id="nameForm" class="name-form">
+          <label class="sr-only" for="nameInput">Enter a name</label>
+          <input id="nameInput" autocomplete="off" maxlength="80" placeholder="Type a name and press Enter" required>
+          <button type="submit" aria-label="Add name">+</button>
+        </form>
+        <p id="duplicateMessage" class="message" role="status"></p>
+
+        <div class="list-meta">
+          <span><strong id="nameCount">0</strong> names ready</span>
+          <button id="shuffleButton" class="text-button" type="button">Shuffle list</button>
+        </div>
+        <ul id="nameList" class="name-list" aria-label="Names"></ul>
+        <div id="emptyState" class="empty-state">
+          <span>✦</span>
+          <p>Your names will gather here.</p>
+          <small>Paste a comma-separated list to add several at once.</small>
+        </div>
+      </article>
+
+      <article class="card picker-card">
+        <div class="card-heading">
+          <div>
+            <p class="step">02</p>
+            <h2>Pick a winner</h2>
+          </div>
+          <label class="toggle">
+            <input id="removeToggle" type="checkbox" checked>
+            <span></span>
+            No repeats
+          </label>
+        </div>
+
+        <div id="result" class="result" aria-live="polite">
+          <div class="result-spark">✦</div>
+          <p id="resultLabel">Ready when you are</p>
+          <h3 id="winnerName">?</h3>
+          <p id="resultHint">Add at least two names to begin.</p>
+        </div>
+
+        <div class="picker-controls">
+          <label for="pickCount">Pick</label>
+          <select id="pickCount" aria-label="Number of winners">
+            <option value="1">1 winner</option>
+            <option value="2">2 winners</option>
+            <option value="3">3 winners</option>
+            <option value="5">5 winners</option>
+          </select>
+          <button id="pickButton" class="pick-button" type="button" disabled>
+            <span>Make the pick</span><span aria-hidden="true">→</span>
+          </button>
+        </div>
+
+        <div class="history-wrap">
+          <div class="history-heading">
+            <h3>Recent picks</h3>
+            <button id="resetButton" class="text-button" type="button">Reset round</button>
+          </div>
+          <ol id="historyList" class="history-list"></ol>
+          <p id="historyEmpty" class="history-empty">No picks yet — the suspense is building.</p>
+        </div>
+      </article>
+    </section>
+
+    <footer>Made for classrooms, teams, giveaways, and indecisive friends.</footer>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
