@@ -1,4 +1,5 @@
 const storageKey = "name-pickers-state-v1";
+const demoNames = ["Maya Chen", "Jordan Lee", "Sam Rivera", "Avery Brooks", "Taylor Morgan", "Casey Green"];
 
 const elements = {
   form: document.querySelector("#nameForm"),
@@ -63,10 +64,10 @@ function render() {
   elements.empty.hidden = state.names.length > 0;
   elements.list.hidden = state.names.length === 0;
   const available = availableNames();
-  elements.pick.disabled = available.length === 0 || picking;
+  elements.pick.disabled = picking;
   elements.resultHint.textContent = state.names.length
     ? `${available.length} ${available.length === 1 ? "name" : "names"} available this round.`
-    : "Add at least two names to begin.";
+    : "Demo mode is ready — tap Make the pick to begin.";
 
   elements.history.innerHTML = state.history.slice(0, 10).map(name => `<li>${escapeHtml(name)}</li>`).join("");
   elements.historyEmpty.hidden = state.history.length > 0;
@@ -94,8 +95,12 @@ function shuffle(array) {
 }
 
 function pickWinners() {
+  if (picking) return;
+  if (!availableNames().length) {
+    state.names = [...demoNames];
+    state.picked = [];
+  }
   const available = availableNames();
-  if (!available.length || picking) return;
   picking = true;
   elements.pick.disabled = true;
   elements.result.classList.add("picking");
@@ -120,7 +125,9 @@ function pickWinners() {
 
 elements.form.addEventListener("submit", event => {
   event.preventDefault();
-  addNames(elements.input.value);
+  const typedName = elements.input.value.trim();
+  const demoName = demoNames.find(name => !state.names.includes(name));
+  addNames(typedName || demoName || `Neighbor ${state.names.length + 1}`);
   elements.input.value = "";
   elements.input.focus();
 });
@@ -148,6 +155,7 @@ elements.clear.addEventListener("click", () => {
 });
 
 elements.shuffle.addEventListener("click", () => {
+  if (!state.names.length) state.names = [...demoNames];
   state.names = shuffle(state.names);
   render();
 });

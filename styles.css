@@ -1,9 +1,9 @@
 :root {
-  --ink: #20201e;
-  --muted: #706d67;
-  --cream: #fff9ef;
-  --card: rgba(255, 253, 248, .84);
-  --line: #ded8ce;
+  --ink: #f5f0e6;
+  --muted: #aaa79f;
+  --cream: #101310;
+  --card: rgba(27, 31, 27, .92);
+  --line: #3b433b;
   --coral: #f26d50;
   --coral-dark: #d95539;
   --mint: #b9dfcf;
@@ -92,6 +92,21 @@ footer { padding: 45px 0; text-align: center; color: var(--muted); font-size: .7
 [hidden] { display: none !important; }
 @keyframes enter { from { opacity: 0; transform: translateY(5px); } }
 @keyframes pulse { to { opacity: .42; transform: scale(.98); } }
+
+/* Dark harvest theme */
+body { color-scheme: dark; }
+.glow-one { background: rgba(242, 109, 80, .13); }
+.glow-two { background: rgba(112, 165, 112, .15); }
+.card { border-color: var(--line); background: var(--card); box-shadow: 0 24px 70px rgba(0, 0, 0, .34); }
+.name-form input, select { border-color: var(--line); background: #171b17; color: var(--ink); }
+.name-form input::placeholder { color: #777d75; }
+.name-form button { background: var(--coral); }
+.name-form button:hover { background: var(--coral-dark); }
+.name-item { border-bottom-color: #303630; }
+.remove-name { color: #858b83; }
+.result { background: #090b09; border: 1px solid #343a34; }
+.history-list li { background: #303630; }
+.brand-logo { background: #fff9ef; }
 @media (max-width: 780px) {
   main { width: min(100% - 24px, 580px); }
   header { height: 75px; }
